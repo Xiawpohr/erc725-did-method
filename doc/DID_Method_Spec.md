@@ -91,3 +91,4 @@ await identity.revoke()
 [^1]: https://w3c-ccg.github.io/did-spec/
 [^2]: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-725.md
 [^3]: https://github.com/ethereum/EIPs/issues/734
+[^4]: https://github.com/WebOfTrustInfo/rwot6-santabarbara/blob/master/topics-and-advance-readings/DID-Method-erc725.md
