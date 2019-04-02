@@ -1,0 +1,33 @@
+{
+  "name": "erc725-did-method",
+  "version": "1.0.0",
+  "description": "ERC725 DID Method",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:Xiawpohr/erc725-did-method.git"
+  },
+  "keywords": [
+    "ERC725",
+    "ERC734",
+    "DID",
+    "DID Document",
+    "DID Method"
+  ],
+  "author": "Xiawpohr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Xiawpohr/erc725-did-method/issues"
+  },
+  "homepage": "https://gitlab.com/Xiawpohr/erc725-did-method#readme",
+  "dependencies": {
+    "web3": "^1.0.0-beta.51"
+  }
+}
