@@ -9,7 +9,7 @@ In order to create a erc725 DID, a smart contract compliant with the ERC725 stan
 ```js
 const identity = await ERC725.Identity.new()
 const did = identity.getDID()
-// 'did:erc725:qwertyuiopasdfghjkl
+// did:erc725:qwertyuiopasdfghjkl
 ```
 
 ### Read (Resolve)
