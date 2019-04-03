@@ -73,7 +73,7 @@ contract Identity is ERC725 {
     }
   }
 
-  function kill() public {
-    if (msg.sender == owner) selfdestruct(msg.sender);
-  }
+  // function kill() public {
+  //   if (msg.sender == owner) selfdestruct(msg.sender);
+  // }
 }

@@ -1,5 +1,5 @@
 {
-  "contractName": "owned",
+  "contractName": "Owned",
   "abi": [
     {
       "inputs": [],
@@ -8,27 +8,27 @@
       "type": "constructor"
     }
   ],
-  "bytecode": "0x6080604052348015600f57600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550603580605d6000396000f3fe6080604052600080fdfea165627a7a723058209ba4fb79cbe799979411a064596371d836278d8d473b65bb337bf4a8cc844a9d0029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a723058209ba4fb79cbe799979411a064596371d836278d8d473b65bb337bf4a8cc844a9d0029",
+  "bytecode": "0x6080604052348015600f57600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550603580605d6000396000f3fe6080604052600080fdfea165627a7a72305820411a03fbfbb7a454edeae54693e50aee301d3cf35d965acc75c31a0d37950d860029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820411a03fbfbb7a454edeae54693e50aee301d3cf35d965acc75c31a0d37950d860029",
   "sourceMap": "33:90:5:-;;;52:44;8:9:-1;5:2;;;30:1;27;20:12;5:2;52:44:5;83:10;75:5;;:18;;;;;;;;;;;;;;;;;;33:90;;;;;;",
   "deployedSourceMap": "33:90:5:-;;;;;",
-  "source": "pragma solidity >=0.5.0 <0.6.0;\n\ncontract owned {\n  constructor() public { owner = msg.sender; }\n  address payable owner;\n}\n\ncontract mortal is owned {\n  function kill() public {\n    if (msg.sender == owner) selfdestruct(owner);\n  }\n}\n",
-  "sourcePath": "/Users/xiaobowen/codes/did-erc725-method/contracts/Mortal.sol",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\ncontract Owned {\n  constructor() public { owner = msg.sender; }\n  address payable owner;\n}\n\ncontract Mortal is Owned {\n  function kill() public {\n    if (msg.sender == owner) selfdestruct(owner);\n  }\n}\n",
+  "sourcePath": "/Users/xiaobowen/codes/erc725-did-method/contracts/Mortal.sol",
   "ast": {
-    "absolutePath": "/Users/xiaobowen/codes/did-erc725-method/contracts/Mortal.sol",
+    "absolutePath": "/Users/xiaobowen/codes/erc725-did-method/contracts/Mortal.sol",
     "exportedSymbols": {
-      "mortal": [
-        742
+      "Mortal": [
+        732
       ],
-      "owned": [
-        726
+      "Owned": [
+        716
       ]
     },
-    "id": 743,
+    "id": 733,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 714,
+        "id": 704,
         "literals": [
           "solidity",
           ">=",
@@ -47,34 +47,34 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 726,
+        "id": 716,
         "linearizedBaseContracts": [
-          726
+          716
         ],
-        "name": "owned",
+        "name": "Owned",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 722,
+              "id": 712,
               "nodeType": "Block",
               "src": "73:23:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 720,
+                    "id": 710,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 717,
+                      "id": 707,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 725,
+                      "referencedDeclaration": 715,
                       "src": "75:5:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
@@ -87,18 +87,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 718,
+                        "id": 708,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 757,
+                        "referencedDeclaration": 747,
                         "src": "83:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 719,
+                      "id": 709,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -118,32 +118,32 @@
                       "typeString": "address payable"
                     }
                   },
-                  "id": 721,
+                  "id": 711,
                   "nodeType": "ExpressionStatement",
                   "src": "75:18:5"
                 }
               ]
             },
             "documentation": null,
-            "id": 723,
+            "id": 713,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 715,
+              "id": 705,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "63:2:5"
             },
             "returnParameters": {
-              "id": 716,
+              "id": 706,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "73:0:5"
             },
-            "scope": 726,
+            "scope": 716,
             "src": "52:44:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -151,10 +151,10 @@
           },
           {
             "constant": false,
-            "id": 725,
+            "id": 715,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "scope": 726,
+            "scope": 716,
             "src": "99:21:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -163,7 +163,7 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 724,
+              "id": 714,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "99:15:5",
@@ -177,7 +177,7 @@
             "visibility": "internal"
           }
         ],
-        "scope": 743,
+        "scope": 733,
         "src": "33:90:5"
       },
       {
@@ -186,38 +186,38 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 727,
-              "name": "owned",
+              "id": 717,
+              "name": "Owned",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 726,
+              "referencedDeclaration": 716,
               "src": "144:5:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_owned_$726",
-                "typeString": "contract owned"
+                "typeIdentifier": "t_contract$_Owned_$716",
+                "typeString": "contract Owned"
               }
             },
-            "id": 728,
+            "id": 718,
             "nodeType": "InheritanceSpecifier",
             "src": "144:5:5"
           }
         ],
         "contractDependencies": [
-          726
+          716
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 742,
+        "id": 732,
         "linearizedBaseContracts": [
-          742,
-          726
+          732,
+          716
         ],
-        "name": "mortal",
+        "name": "Mortal",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 740,
+              "id": 730,
               "nodeType": "Block",
               "src": "177:55:5",
               "statements": [
@@ -228,7 +228,7 @@
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     },
-                    "id": 734,
+                    "id": 724,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -237,18 +237,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 731,
+                        "id": 721,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 757,
+                        "referencedDeclaration": 747,
                         "src": "187:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 732,
+                      "id": 722,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -266,11 +266,11 @@
                     "operator": "==",
                     "rightExpression": {
                       "argumentTypes": null,
-                      "id": 733,
+                      "id": 723,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 725,
+                      "referencedDeclaration": 715,
                       "src": "201:5:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
@@ -284,7 +284,7 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 739,
+                  "id": 729,
                   "nodeType": "IfStatement",
                   "src": "183:44:5",
                   "trueBody": {
@@ -293,11 +293,11 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 736,
+                          "id": 726,
                           "name": "owner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 725,
+                          "referencedDeclaration": 715,
                           "src": "221:5:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
@@ -312,18 +312,18 @@
                             "typeString": "address payable"
                           }
                         ],
-                        "id": 735,
+                        "id": 725,
                         "name": "selfdestruct",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 765,
+                        "referencedDeclaration": 755,
                         "src": "208:12:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_payable_$returns$__$",
                           "typeString": "function (address payable)"
                         }
                       },
-                      "id": 737,
+                      "id": 727,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -337,7 +337,7 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 738,
+                    "id": 728,
                     "nodeType": "ExpressionStatement",
                     "src": "208:19:5"
                   }
@@ -345,52 +345,52 @@
               ]
             },
             "documentation": null,
-            "id": 741,
+            "id": 731,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "kill",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 729,
+              "id": 719,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "167:2:5"
             },
             "returnParameters": {
-              "id": 730,
+              "id": 720,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "177:0:5"
             },
-            "scope": 742,
+            "scope": 732,
             "src": "154:78:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 743,
+        "scope": 733,
         "src": "125:109:5"
       }
     ],
     "src": "0:235:5"
   },
   "legacyAST": {
-    "absolutePath": "/Users/xiaobowen/codes/did-erc725-method/contracts/Mortal.sol",
+    "absolutePath": "/Users/xiaobowen/codes/erc725-did-method/contracts/Mortal.sol",
     "exportedSymbols": {
-      "mortal": [
-        742
+      "Mortal": [
+        732
       ],
-      "owned": [
-        726
+      "Owned": [
+        716
       ]
     },
-    "id": 743,
+    "id": 733,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 714,
+        "id": 704,
         "literals": [
           "solidity",
           ">=",
@@ -409,34 +409,34 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 726,
+        "id": 716,
         "linearizedBaseContracts": [
-          726
+          716
         ],
-        "name": "owned",
+        "name": "Owned",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 722,
+              "id": 712,
               "nodeType": "Block",
               "src": "73:23:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 720,
+                    "id": 710,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 717,
+                      "id": 707,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 725,
+                      "referencedDeclaration": 715,
                       "src": "75:5:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
@@ -449,18 +449,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 718,
+                        "id": 708,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 757,
+                        "referencedDeclaration": 747,
                         "src": "83:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 719,
+                      "id": 709,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -480,32 +480,32 @@
                       "typeString": "address payable"
                     }
                   },
-                  "id": 721,
+                  "id": 711,
                   "nodeType": "ExpressionStatement",
                   "src": "75:18:5"
                 }
               ]
             },
             "documentation": null,
-            "id": 723,
+            "id": 713,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 715,
+              "id": 705,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "63:2:5"
             },
             "returnParameters": {
-              "id": 716,
+              "id": 706,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "73:0:5"
             },
-            "scope": 726,
+            "scope": 716,
             "src": "52:44:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -513,10 +513,10 @@
           },
           {
             "constant": false,
-            "id": 725,
+            "id": 715,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "scope": 726,
+            "scope": 716,
             "src": "99:21:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -525,7 +525,7 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 724,
+              "id": 714,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "99:15:5",
@@ -539,7 +539,7 @@
             "visibility": "internal"
           }
         ],
-        "scope": 743,
+        "scope": 733,
         "src": "33:90:5"
       },
       {
@@ -548,38 +548,38 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 727,
-              "name": "owned",
+              "id": 717,
+              "name": "Owned",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 726,
+              "referencedDeclaration": 716,
               "src": "144:5:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_owned_$726",
-                "typeString": "contract owned"
+                "typeIdentifier": "t_contract$_Owned_$716",
+                "typeString": "contract Owned"
               }
             },
-            "id": 728,
+            "id": 718,
             "nodeType": "InheritanceSpecifier",
             "src": "144:5:5"
           }
         ],
         "contractDependencies": [
-          726
+          716
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 742,
+        "id": 732,
         "linearizedBaseContracts": [
-          742,
-          726
+          732,
+          716
         ],
-        "name": "mortal",
+        "name": "Mortal",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 740,
+              "id": 730,
               "nodeType": "Block",
               "src": "177:55:5",
               "statements": [
@@ -590,7 +590,7 @@
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     },
-                    "id": 734,
+                    "id": 724,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -599,18 +599,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 731,
+                        "id": 721,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 757,
+                        "referencedDeclaration": 747,
                         "src": "187:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 732,
+                      "id": 722,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -628,11 +628,11 @@
                     "operator": "==",
                     "rightExpression": {
                       "argumentTypes": null,
-                      "id": 733,
+                      "id": 723,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 725,
+                      "referencedDeclaration": 715,
                       "src": "201:5:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
@@ -646,7 +646,7 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 739,
+                  "id": 729,
                   "nodeType": "IfStatement",
                   "src": "183:44:5",
                   "trueBody": {
@@ -655,11 +655,11 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 736,
+                          "id": 726,
                           "name": "owner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 725,
+                          "referencedDeclaration": 715,
                           "src": "221:5:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
@@ -674,18 +674,18 @@
                             "typeString": "address payable"
                           }
                         ],
-                        "id": 735,
+                        "id": 725,
                         "name": "selfdestruct",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 765,
+                        "referencedDeclaration": 755,
                         "src": "208:12:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_payable_$returns$__$",
                           "typeString": "function (address payable)"
                         }
                       },
-                      "id": 737,
+                      "id": 727,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -699,7 +699,7 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 738,
+                    "id": 728,
                     "nodeType": "ExpressionStatement",
                     "src": "208:19:5"
                   }
@@ -707,32 +707,32 @@
               ]
             },
             "documentation": null,
-            "id": 741,
+            "id": 731,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "kill",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 729,
+              "id": 719,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "167:2:5"
             },
             "returnParameters": {
-              "id": 730,
+              "id": 720,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "177:0:5"
             },
-            "scope": 742,
+            "scope": 732,
             "src": "154:78:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 743,
+        "scope": 733,
         "src": "125:109:5"
       }
     ],
@@ -744,7 +744,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-04-02T08:01:06.859Z",
+  "updatedAt": "2019-04-03T02:41:52.991Z",
   "devdoc": {
     "methods": {}
   },
