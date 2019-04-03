@@ -11,11 +11,17 @@ const web3 = new Web3('http://127.0.0.1:8545')
 main()
 
 async function main () {
-  const accounts = await web3.eth.getAccounts()
-  const did = await register(accounts[0])
-  console.log(did)
-  const doc = await resolve(did)
-  console.log(doc)
+  try {
+    const accounts = await web3.eth.getAccounts()
+    const did = await register(accounts[0])
+    console.log(did)
+    const doc = await resolve(did)
+    console.log(doc)
+    await revoke(did, { from: accounts[0], gas: 480000 })
+    console.log('DID revokes successfully.')
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 async function register (account) {
@@ -61,9 +67,16 @@ async function resolve (did) {
   return JSON.stringify(didDoc)
 }
 
-// async function revoke (did) {
-
-// }
+async function revoke (did, { from, gas }) {
+  try {
+    const parsed = parse(did)
+    const address = `0x${parsed.identifier}`
+    const identity = await connectContract({ abi: IdentityABI, address })
+    await identity.methods.kill().send({ from, gas })
+  } catch (e) {
+    throw new Error(`revoke failed.-- ${e}`)
+  }
+}
 
 
 async function deployContract ({ abi, bytecode, arguments = [], from, gas = 3000000 }) {
