@@ -2,7 +2,6 @@ pragma solidity >=0.5.0 <0.6.0;
 
 import "./ERC725.sol";
 import "./ERC734.sol";
-import "./Identity.sol";
 
 contract KeyManager is ERC734 {
 
@@ -13,12 +12,12 @@ contract KeyManager is ERC734 {
   uint256 constant ECDSA_TYPE = 1;
   uint256 constant RSA_TYPE = 2;
 
-  ERC725 public identity;
+  ERC725 private identity;
   mapping (bytes32 => Key) keys;
   mapping (uint256 => bytes32[]) keysByPurpose;
 
-  constructor(address _manager) public {
-    identity = new Identity(address(this));
+  constructor(address _identity, address _manager) public {
+    identity = ERC725(_identity);
     bytes32 _key = keccak256(abi.encodePacked(_manager));
     keys[_key] = Key({
       purpose: MANAGEMENT_KEY,

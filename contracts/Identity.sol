@@ -1,6 +1,7 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 import "./ERC725.sol";
+import "./KeyManager.sol";
 
 contract Identity is ERC725 {
   uint256 constant OPERATION_CALL = 0;
@@ -10,7 +11,7 @@ contract Identity is ERC725 {
   mapping(bytes32 => bytes32) store;
 
   constructor(address _owner) public {
-    owner = _owner;
+    owner = address(new KeyManager(address(this), _owner));
   }
 
   modifier onlyOwner() {
