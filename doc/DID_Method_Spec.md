@@ -7,8 +7,8 @@ Decentralized Idenitfiers (DIDs, see [^1]) are designed to be compatible with an
 In order to create a erc725 DID, a smart contract compliant with the ERC725 standard must be deployed on Ethereum. The holder of the private key that created the smart contract is the entity identified by the DID. The Ethereum network identifier together with the smart contract address becomes the DID as per the syntax rules above.
 
 ```js
-const identity = await Identity.new()
-const did = identity.getDID()
+const identity = await did.register(options)
+const id = await identity.getDid()
 // did:erc725:qwertyuiopasdfghjkl
 ```
 
@@ -28,8 +28,8 @@ Note: Service endpoints and other elements of a DID Document may be supported in
 
 ```js
 const did = 'did:erc725:qwertyuiopasdfghjkl'
-const identity = await Identity.resolve(did)
-const didDoc = identity.getDoc()
+const identity = await Identity.connect(did)
+const didDoc = identity.resolve()
 /*
 {
   "@context": "https://w3id.org/did/v1",
@@ -64,7 +64,7 @@ The DID Document may be updated by invoking the relevant smart contract function
 #### Key Creation
 ```js
 const did = 'did:erc725:qwertyuiopasdfghjkl'
-const identity = await Identity.resolve(did)
+const identity = await Identity.connect(did)
 
 const key = '0x202fB73194756C58B7beD0746DcF570FA6e3B040'
 const keyType = 3
@@ -74,7 +74,7 @@ await identity.addKey(key, keyType)
 #### Key Revocation
 ```js
 const did = 'did:erc725:qwertyuiopasdfghjkl'
-const identity = await Identity.resolve(did)
+const identity = await Identity.connect(did)
 await identity.removeKey(keyId)
 ```
 
@@ -83,7 +83,7 @@ Revoking the DID can be supported by executing a `selfdestruct()` operation that
 
 ```js
 const did = 'did:erc725:qwertyuiopasdfghjkl'
-const identity = await Identity.resolve(did)
+const identity = await Identity.connect(did)
 await identity.revoke()
 ```
 

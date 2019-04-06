@@ -1,3 +1,18 @@
+/* spec
+const ERC725DID = require('erc725-did-mothod')
+const did = new ERC725DID('http://127.0.0.1:8545')
+
+const identity = await did.connect(did)
+const identity = await did.register(options)
+const did = await identity.getDid()
+const doc = await identity.resolve()
+const event = await identity.addKey(key, type, purpose, options)
+const event = await identity.removeKey(key, options)
+const event = await identity.revoke(options)
+
+did.setProvider()
+*/
+
 const Web3 = require('web3')
 const KeyManager = require('../build/contracts/KeyManager.json')
 const Identity = require('../build/contracts/Identity.json')
@@ -6,7 +21,6 @@ const IdentityBytecode = Identity.bytecode
 const KeyManagerABI = KeyManager.abi
 const KeyManagerBytecode = KeyManager.bytecode
 const web3 = new Web3('http://127.0.0.1:8545')
-
 
 main()
 
