@@ -8,7 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "truffle test"
+    "build": "webpack --env build",
+    "test": "truffle test",
+    "example": "node example/main.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +31,9 @@
   "homepage": "https://gitlab.com/Xiawpohr/erc725-did-method#readme",
   "dependencies": {
     "web3": "^1.0.0-beta.34"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
