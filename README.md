@@ -1,5 +1,5 @@
 # DID ERC725 Method
-Decentralized Idenitfiers (DIDs, see [^1]) are designed to be compatible with any distributed ledger or network. In the Ethereum community, a pattern known as ERC-725, ERC-734 (see [^2] and [^3]) utilizes smart contracts to be a unique identifiable proxy account used by humans, groups, organizations, objects and machine.
+Decentralized Idenitfiers (DIDs[^1]) are designed to be compatible with any distributed ledger or network. In the Ethereum community, a pattern known as ERC-725[^2], ERC-734[^3] utilizes smart contracts to be a unique identifiable proxy account used by humans, groups, organizations, objects and machine.
 
 The method implementation allows ERC-725 identities to be treated as valid DIDs.
 
@@ -42,3 +42,8 @@ const event = await identity.revoke(options)
 
 ## Specification
 To see spec, read [this](./doc/DID_Method_Spec.md).
+
+## References
+[^1]: https://w3c-ccg.github.io/did-spec/
+[^2]: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-725.md
+[^3]: https://github.com/ethereum/EIPs/issues/734

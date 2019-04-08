@@ -1,6 +1,6 @@
 # DID Method Driver Specification
 ## Overview
-Decentralized Idenitfiers (DIDs, see [^1]) are designed to be compatible with any distributed ledger or network. In the Ethereum community, a pattern known as ERC-725, ERC-734 (see [^2] and [^3]) utilizes smart contracts to be a unique identifiable proxy account used by humans, groups, organizations, objects and machine. This Document describes the implementation that allows ERC-725 identities to be treated as valid DIDs.
+Decentralized Idenitfiers (DIDs[^1]) are designed to be compatible with any distributed ledger or network. In the Ethereum community, a pattern known as ERC-725[^2], ERC-734[^3] utilizes smart contracts to be a unique identifiable proxy account used by humans, groups, organizations, objects and machine. This Document describes the implementation that allows ERC-725 identities to be treated as valid DIDs.
 
 ## CRUD Operation Definition
 ### Create (Register)
@@ -30,7 +30,10 @@ Note: Service endpoints and other elements of a DID Document may be supported in
 const did = 'did:erc725:qwertyuiopasdfghjkl'
 const identity = await Identity.connect(did)
 const didDoc = identity.resolve()
-/*
+```
+
+The DID example: 
+```js
 {
   "@context": "https://w3id.org/did/v1",
   "id": "did:example:123456789abcdefghi",
@@ -56,7 +59,6 @@ const didDoc = identity.resolve()
     "serviceEndpoint": "https://repository.example.com/service/8377464"
   }]
 }
-*/
 ```
 
 ### Update (Key Management)
