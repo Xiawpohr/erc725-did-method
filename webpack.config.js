@@ -14,10 +14,11 @@ const config = (env) => {
     devtool = 'inline-source-map'
     outputFile += '.js'
   }
-  
+
   return {
     mode,
-    entry: path.resolve(__dirname + '/src/index.js'),
+    devtool,
+    entry: path.resolve(__dirname, 'src/index.js'),
     output: {
       path: path.resolve(__dirname, 'build/lib'),
       filename: outputFile,
