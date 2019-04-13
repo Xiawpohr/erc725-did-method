@@ -1,9 +1,10 @@
-# 0.0.2 (unreleased)
+# 0.0.2 (2019-04-12)
 ### New Feature
-- **Implementation**: Register a did.
-- **Implementation**: Resolve a did.
-- **Implementation**: Manage Keys inside a did.
-- **Implementation**: Revoke a did.
+- **Implementation**: Register a DID.
+- **Implementation**: Resolve a DID.
+- **Implementation**: Add a key to DID Document.
+- **Implementation**: Remove a key to DID Document.
+- **Implementation**: Revoke a DID.
 
 # 0.0.1 (2019-04-03)
 ### Minor
