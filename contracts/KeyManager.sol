@@ -12,11 +12,13 @@ contract KeyManager is ERC734 {
   uint256 constant ECDSA_TYPE = 1;
   uint256 constant RSA_TYPE = 2;
 
+  address public manager;
   ERC725 private identity;
   mapping (bytes32 => Key) keys;
   mapping (uint256 => bytes32[]) keysByPurpose;
 
   constructor(address _identity, address _manager) public {
+    manager = _manager;
     identity = ERC725(_identity);
     bytes32 _key = keccak256(abi.encodePacked(_manager));
     keys[_key] = Key({
@@ -70,6 +72,8 @@ contract KeyManager is ERC734 {
     if (msg.sender != address(this)) {
       require(this.keyHasPurpose(keccak256(abi.encodePacked(msg.sender)), 1), "Sender does not have a manager key.");
     }
+    
+    emit KeyRemoved(_key, _purpose, keys[_key].keyType);
 
     delete keys[_key];
 
@@ -84,7 +88,6 @@ contract KeyManager is ERC734 {
     }
     keysByPurpose[_purpose] = keysCache;
 
-    emit KeyRemoved(_key, _purpose, keys[_key].keyType);
 
     return true;
   }
