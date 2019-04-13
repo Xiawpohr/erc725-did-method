@@ -4,14 +4,17 @@ import KeyManagerMeta from '../build/contracts/KeyManager.json'
 const IdentityABI = IdentityMeta.abi
 const IdentityBytecode = IdentityMeta.bytecode
 const KeyManagerABI = KeyManagerMeta.abi
-const KeyManagerBytecode = KeyManagerMeta.bytecode
 
 class Identity {
-  constructor (web3, did = null, { from, gas } = {}) {
+  constructor (web3, did = null) {
     this.web3 = web3
     this.did = did
+    this.from = null
+    this.identity = null
+    this.keyManager = null
+    this.defaultGas = 480000
   }
-  
+
   async init ({ from, gas } = {}) {
     if (this.did) {
       const { identifier } = parse(this.did)
@@ -38,6 +41,7 @@ class Identity {
       abi: KeyManagerABI,
       address: ownerAddress
     })
+    this.from = await this.keyManager.methods.manager().call()
   }
 
   async getDid () {
@@ -49,20 +53,20 @@ class Identity {
       const managementKeyIds = await this.keyManager.methods.getKeysByPurpose(1).call()
       const unformatedPublicKey = await Promise.all(
         managementKeyIds.map(async (keyId) => {
-          return await this.keyManager.methods.getKey(keyId).call()
+          return this.keyManager.methods.getKey(keyId).call()
         })
       )
       const publicKey = unformatedPublicKey.map((key, i) => {
         return {
-          id: `${did}#owner-${i}`,
+          id: `${this.did}#owner-${i + 1}`,
           type: getTypeByCode(key[1]),
-          controller: did,
+          controller: this.did,
           publicKeyHex: key[2].slice(2)
         }
       })
       const didDoc = {
         '@context': 'https://w3id.org/did/v1',
-        id: did,
+        id: this.did,
         publicKey
       }
       return JSON.stringify(didDoc)
@@ -71,12 +75,47 @@ class Identity {
     }
   }
 
-  addKey () {}
-  removeKey () {}
-
-  async revoke ({ from, gas }) {
+  async addKey (key, purpose, type) {
     try {
-      await this.identity.methods.kill().send({ from, gas })
+      const receipt = await this.keyManager.methods.addKey(key, purpose, type).send({
+        from: this.from,
+        gas: this.defaultGas
+      })
+      const event = receipt.events.KeyAdded.returnValues
+      return {
+        key: event.key,
+        purpose: event.purpose,
+        keyType: event.keyType
+      }
+    } catch (e) {
+      throw new Error(`AddKey failed, Message: ${e}`)
+    }
+  }
+
+  async removeKey (key, purpose) {
+    try {
+      const receipt = await this.keyManager.methods.removeKey(key, purpose).send({
+        from: this.from,
+        gas: this.defaultGas
+      })
+      const event = receipt.events.KeyRemoved.returnValues
+      return {
+        key: event.key,
+        purpose: event.purpose,
+        keyType: event.keyType
+      }
+    } catch (e) {
+      throw new Error(`RemoveKey failed, Message: ${e}`)
+    }
+  }
+
+  async revoke () {
+    try {
+      await this.identity.methods.kill().send({
+        from: this.from,
+        gas: this.defaultGas
+      })
+      return true
     } catch (e) {
       throw new Error(`Revoke failed. Message: ${e}`)
     }
