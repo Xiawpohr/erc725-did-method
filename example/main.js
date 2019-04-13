@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-const ERC725DID = require('../build/lib/erc725did.min.js').default
+const ERC725DID = require('@xiawpohr/erc725-did-method')
 
 main()
 

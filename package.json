@@ -1,8 +1,8 @@
 {
-  "name": "erc725-did-method",
+  "name": "@xiawpohr/erc725-did-method",
   "version": "1.0.0",
   "description": "ERC725 DID Method",
-  "main": "src/index.js",
+  "main": "build/lib/erc725did.min.js",
   "directories": {
     "doc": "doc",
     "test": "test"
@@ -12,6 +12,7 @@
     "lint": "npx eslint . --ext .js",
     "lint:fix": "npx eslint . --ext .js --fix",
     "test": "truffle test",
+    "prepare": "require-self",
     "example": "node example/main.js"
   },
   "repository": {
@@ -41,6 +42,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "require-self": "^0.2.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }

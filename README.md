@@ -4,7 +4,9 @@ Decentralized Idenitfiers (DIDs[^1]) are designed to be compatible with any dist
 The method implementation allows ERC-725 identities to be treated as valid DIDs.
 
 ## Installation
-TODO
+```
+npm install @xiawpohr/erc725-did-method
+```
 
 ## Usage
 ### Initialization
