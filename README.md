@@ -9,8 +9,10 @@ TODO
 ## Usage
 ### Initialization
 ```js
-const ERC725DID = require('erc725-did-mothod')
-const did = new ERC725DID('http://127.0.0.1:8545')
+const Web3 = require('web3')
+const ERC725DID = require('erc725-did-method')
+const web3 = new Web3('http://127.0.0.1:8545')
+const erc725did = new ERC725DID({ web3 })
 ```
 
 ### Register a DID for the identity
@@ -19,25 +21,28 @@ const options = {
   from: '0x202fB73194756C58B7beD0746DcF570FA6e3B040',
   gas: 3000000
 }
-const identity = await did.register(options)
-const id = await identity.getDid()
+const identity = await erc725did.register(options)
+const did = await identity.getDid()
 ```
 
 ### Resolve DID to DID document
 ```js
-const identity = await did.connect('did:erc725:202fB73194756C58B7beD0746DcF570FA6e3B040')
+const identity = await erc725did.connect('did:erc725:202fB73194756C58B7beD0746DcF570FA6e3B040')
 const doc = await identity.resolve()
 ```
 
 ### Key management inside an identity
 ```js
-const event = await identity.addKey(key, type, purpose, options)
-const event = await identity.removeKey(key, options)
+const key = web3.utils.keccak256('0x202fB73194756C58B7beD0746DcF570FA6e3B040')
+const purpose = 2
+const type = 1
+const event = await identity.addKey(key, purpose, type)
+const event = await identity.removeKey(key, purpose)
 ```
 
 ### Revoke a DID for the identity
 ```js
-const event = await identity.revoke(options)
+await identity.revoke()
 ```
 
 ## Specification
