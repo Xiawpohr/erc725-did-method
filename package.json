@@ -1,6 +1,6 @@
 {
   "name": "@xiawpohr/erc725-did-method",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ERC725 DID Method",
   "main": "build/lib/erc725did.min.js",
   "directories": {
