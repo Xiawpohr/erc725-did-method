@@ -4,10 +4,10 @@ Decentralized Idenitfiers (DIDs[^1]) are designed to be compatible with any dist
 
 ## CRUD Operation Definition
 ### Create (Register)
-In order to create a erc725 DID, a smart contract compliant with the ERC725 standard must be deployed on Ethereum. The holder of the private key that created the smart contract is the entity identified by the DID. The Ethereum network identifier together with the smart contract address becomes the DID as per the syntax rules above.
+In order to create a ERC-725 DID, a smart contract compliant with the ERC-725 standard must be deployed on Ethereum. The holder of the private key that created the smart contract is the entity identified by the DID. The Ethereum network identifier together with the smart contract address becomes the DID as per the syntax rules above.
 
 ### Read (Resolve)
-To construct a valid DID document from an erc725 DID, the following steps are performed:
+To construct a valid DID document from an ERC-725 DID, the following steps are performed:
 1. Determine the Ethereum network identifier ("mainnet", "ropsten", "rinkeby", or "kovan"). If the DID contains no network identifier, then the default is "mainnet".
 2. Invoke the `getKeysByType` function for each of the supported key types, i.e. MANAGEMENT, EXECUTION, CLAIM.
 3. For each MANAGEMENT public key:
@@ -50,7 +50,7 @@ The DID example:
 ```
 
 ### Update (Key Management)
-The DID Document may be updated by invoking the relevant smart contract functions as defined by the ERC725 standard: `addKey` and `removeKey`.
+The DID Document may be updated by invoking the relevant smart contract functions as defined by the ERC-725 standard: `addKey` and `removeKey`.
 
 ### Delete (Revoke)
 Revoking the DID can be supported by executing a `selfdestruct()` operation that is part of the smart contract. This will remove the smart contract's storage and code from the Ethereum state, effectively marking the DID as revoked.
