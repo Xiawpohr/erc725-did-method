@@ -28,7 +28,7 @@ export const connectContract = async function ({ web3, abi, address }) {
 }
 
 export const parse = function (did) {
-  if (did === '') throw new Error('Missing DID.')
+  if (typeof did !== 'string' || !did.length) throw new Error('Missing DID.')
   const sections = did.match(/^did:([a-zA-Z0-9_]+):([[a-zA-Z0-9_.-]+)(\/[^#]*)?(#.*)?$/)
   if (sections) {
     const parts = { did: sections[0], method: sections[1], identifier: sections[2] }
